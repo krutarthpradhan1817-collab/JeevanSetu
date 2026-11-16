@@ -1,0 +1,164 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background:
+    radial-gradient(1200px 600px at 12% -10%, rgba(220, 38, 38, 0.16), transparent 60%),
+    radial-gradient(900px 500px at 95% 0%, rgba(14, 165, 233, 0.14), transparent 55%),
+    #060b16;
+  color: #e2e8f0;
+}
+
+@layer components {
+  .card {
+    @apply rounded-xl border border-slate-800 bg-slate-900/70 shadow-lg shadow-black/20;
+  }
+  .card-pad {
+    @apply p-4 sm:p-5;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg border border-slate-700 bg-slate-800/80 px-3 py-2 text-sm font-semibold text-slate-100 transition hover:border-slate-500 hover:bg-slate-700/80 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-primary {
+    @apply border-red-500/60 bg-red-600 text-white hover:border-red-400 hover:bg-red-500;
+  }
+  .btn-success {
+    @apply border-emerald-500/60 bg-emerald-600 text-white hover:border-emerald-400 hover:bg-emerald-500;
+  }
+  .btn-ghost {
+    @apply border-transparent bg-transparent text-slate-300 hover:bg-slate-800/70;
+  }
+  .btn-sm {
+    @apply px-2.5 py-1.5 text-xs;
+  }
+  .input {
+    @apply w-full rounded-lg border border-slate-700 bg-slate-950/70 px-3 py-2 text-sm text-slate-100 outline-none placeholder:text-slate-500 focus:border-red-500/70 focus:ring-2 focus:ring-red-500/20;
+  }
+  .label {
+    @apply mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-400;
+  }
+  .pill {
+    @apply inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide;
+  }
+  .table-wrap {
+    @apply overflow-x-auto rounded-xl border border-slate-800;
+  }
+  .data-table {
+    @apply w-full min-w-[640px] border-collapse text-left text-sm;
+  }
+  .data-table th {
+    @apply border-b border-slate-800 bg-slate-900/80 px-3 py-2 text-[11px] font-semibold uppercase tracking-wide text-slate-400;
+  }
+  .data-table td {
+    @apply border-b border-slate-800/60 px-3 py-2 align-top text-slate-200;
+  }
+  .data-table tr:hover td {
+    @apply bg-slate-800/30;
+  }
+}
+
+/* Leaflet dark tuning */
+.leaflet-container {
+  background: #0b1220;
+  font-family: inherit;
+  z-index: 0;
+}
+.leaflet-control-attribution {
+  background: rgba(2, 6, 23, 0.75) !important;
+  color: #94a3b8 !important;
+  font-size: 10px !important;
+}
+.leaflet-control-attribution a {
+  color: #cbd5e1 !important;
+}
+.leaflet-bar {
+  border: 1px solid #1e293b !important;
+  background: rgba(15, 23, 42, 0.92) !important;
+}
+.leaflet-bar a {
+  background: transparent !important;
+  color: #e2e8f0 !important;
+  border-bottom-color: #1e293b !important;
+}
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+  background: #0f172a !important;
+  color: #e2e8f0 !important;
+  border: 1px solid #1e293b;
+}
+.leaflet-popup-content {
+  margin: 10px 12px !important;
+  font-size: 12px;
+  line-height: 1.45;
+}
+.leaflet-popup-close-button {
+  color: #94a3b8 !important;
+}
+.js-marker {
+  display: grid;
+  place-items: center;
+  border-radius: 9999px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  border: 2px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 0 0 0 4px rgba(15, 23, 42, 0.55);
+}
+.js-marker-label {
+  background: rgba(2, 6, 23, 0.85);
+  color: #e2e8f0;
+  border: 1px solid #334155;
+  border-radius: 6px;
+  padding: 1px 5px;
+  font-size: 10px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Animated ambulance vehicle marker (rotates with the road heading) */
+.js-vehicle {
+  position: relative;
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+}
+.js-vehicle-body {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 9999px;
+  background: #16a34a;
+  border: 2px solid #f0fdf4;
+  box-shadow: 0 0 0 4px rgba(22, 163, 74, 0.28), 0 2px 6px rgba(0, 0, 0, 0.45);
+  font-size: 15px;
+}
+.js-vehicle-arrow {
+  position: absolute;
+  top: -9px;
+  left: 50%;
+  margin-left: -7px;
+  width: 14px;
+  height: 14px;
+  color: #22c55e;
+  font-size: 13px;
+  line-height: 14px;
+  text-align: center;
+  transform-origin: 50% 26px;
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.6);
+}
+
+.js-vehicle-label {
+  white-space: nowrap;
+  font-size: 10px;
+  pointer-events: none;
+}
